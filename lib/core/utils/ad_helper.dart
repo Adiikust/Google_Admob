@@ -1,5 +1,3 @@
-//TODO:5 Add this file to your proect & then change the ad unit id for each Ad
-
 import 'dart:io';
 
 class AdHelper {

@@ -1,9 +1,10 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:google_admob/core/utils/ad_helper.dart';
+import 'package:google_admob/presentation/rewarded_interstitial_view.dart';
+import 'package:google_admob/presentation/rewarded_view.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-
+import 'native_advanced_view.dart';
 import 'widgets.dart';
 
 class NewsArticlePage extends StatefulWidget {
@@ -17,8 +18,11 @@ class NewsArticlePage extends StatefulWidget {
 }
 
 class _NewsArticlePageState extends State<NewsArticlePage> {
+  ///interstitial ads
   late InterstitialAd fullPageAd;
   bool isFullPageAdLoaded = false;
+
+  ///banner ads
   late BannerAd _bottomBannerAd;
   bool isBottomBannerAdLoaded = false;
 
@@ -84,6 +88,35 @@ class _NewsArticlePageState extends State<NewsArticlePage> {
                 ),
               ),
             ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const RewardedInterstitialView()));
+                },
+                child: const Text('Rewarded interstitial')),
+            const SizedBox(height: 10),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RewardedView()));
+                },
+                child: const Text('Rewarded')),
+            const SizedBox(height: 10),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NativeAdvancedView()));
+                },
+                child: const Text('Native Advanced')),
+            const SizedBox(height: 10),
           ],
         ),
         bottomNavigationBar: isBottomBannerAdLoaded == true
